@@ -3,14 +3,14 @@
 
 ### Instrucciones:
 
-> node app -d "Nombre de ciudad"
+```node app -d "Nombre de ciudad"```
 
 Ejemplo:
 
-> node app -d "Madrid"
+```node app -d "Madrid"```
 
-> node app --help
+```node app --help```
 para ayuda
 
 ### Instalación
-> npm install
+```npm install```
