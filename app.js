@@ -4,7 +4,7 @@ const clima = require('./clima/clima');
 const argv = require('yargs').options({
     direccion: {
         alias: 'd',
-        desc: 'Dirección de la cuidad para obtener el clima',
+        desc: 'Nombre de la cuidad para obtener el clima',
         demand: true
     }
 }).argv;
