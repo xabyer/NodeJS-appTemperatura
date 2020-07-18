@@ -1,27 +1,30 @@
 const axios = require('axios');
 
-let getLugarLatLng = (direccion) => {
+const getLugarLatLng = async(direccion) => {
 
     let ciudad = encodeURI(direccion);
-    let latitud = 0;
-    let longitud = 0;
-    console.log(ciudad);
+
+
+
 
     const instance = axios.create({
         baseURL: `https://geocode.xyz/${ciudad}?json=1`
     });
 
-    instance.get()
-        .then(resp => {
-            console.log(resp.data);
-            latitud = res.data.latt;
-            longitud = resp.data.longt;
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const resp = await instance.get();
 
+    if (resp.data.length === 0) {
+        throw new Error(`No hay resultados para ${direccion}`);
+    }
+
+    const mi_data = resp.data.alt.loc;
+    const postal = mi_data.postal;
+    const latitud = mi_data.latt;
+    const longitud = mi_data.longt;
+    const lugar = `${resp.data.standard.city}, ${resp.data.standard.countryname}`
     return {
+        lugar,
+        postal,
         latitud,
         longitud
     }
