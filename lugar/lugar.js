@@ -12,7 +12,7 @@ const getLugarLatLng = async(direccion) => {
     });
 
     const resp = await instance.get();
-    console.log(resp);
+
     if (resp.data.length === 0) {
         throw new Error(`No hay resultados para ${direccion}`);
     }
